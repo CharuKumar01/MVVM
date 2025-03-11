@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.mvvm"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.mvvm"
@@ -29,6 +29,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = "11"
+    }
+
+    dataBinding{
+        enable = true
     }
 }
 

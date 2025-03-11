@@ -1,13 +1,18 @@
 package com.example.mvvm
 
-import android.content.Context
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.viewmodel.ViewModelFactoryDsl
 
 class MainActivity : AppCompatActivity() {
+    private val viewModel: QuotesViewModel by viewModels {ViewModelFactory(applicationContext)}
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -17,5 +22,11 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val tvQuotes: TextView = findViewById(R.id.tvQuotes)
+        val btnFetch: Button = findViewById(R.id.btnFetch)
+
+
+
     }
 }
