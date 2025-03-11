@@ -8,10 +8,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.viewmodel.ViewModelFactoryDsl
 
 class MainActivity : AppCompatActivity() {
-    private val viewModel: QuotesViewModel by viewModels {ViewModelFactory(applicationContext)}
+    private val viewModel: QuotesViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +25,13 @@ class MainActivity : AppCompatActivity() {
         val tvQuotes: TextView = findViewById(R.id.tvQuotes)
         val btnFetch: Button = findViewById(R.id.btnFetch)
 
+        viewModel.quote.observe(this){ quote ->
+            tvQuotes.text = quote.text
+        }
 
+        btnFetch.setOnClickListener {
+            viewModel.showRandomQuote()
+        }
 
     }
 }

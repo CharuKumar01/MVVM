@@ -1,12 +1,12 @@
 package com.example.mvvm
 
-import android.content.Context
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 
-class QuotesViewModel(context: Context) : ViewModel() {
-    private val repository = QuotesRepository(context)
+class QuotesViewModel(application: Application) : AndroidViewModel(application) {
+    private val repository = QuotesRepository(application.applicationContext)
 
     private val quotes = repository.getQuotes()
 
